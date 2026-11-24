@@ -6,13 +6,30 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
-include_directories(include)
+set(CURSES_NEED_NCURSES TRUE)
+set(CURSES_NEED_WIDE TRUE)
+find_package(Curses REQUIRED)
+
+
+
 
 set(SOURCES
-    src/main.cpp
-    src/game.cpp
+src/main.cpp
+src/jsonParser.cpp
+# src/screen.cpp
+# src/game.cpp
 )
 
 add_executable(main ${SOURCES})
 
-# target_link_libraries(main m)
+add_executable(test src/jsonParser.cpp)
+
+target_include_directories(main PRIVATE
+    include
+    ${CURSES_INCLUDE_DIRS}
+)
+
+
+target_link_libraries(main PRIVATE
+    ${CURSES_LIBRARIES}
+)
