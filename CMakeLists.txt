@@ -20,16 +20,26 @@ src/jsonParser.cpp
 # src/game.cpp
 )
 
+# main
 add_executable(main ${SOURCES})
-
-add_executable(test src/jsonParser.cpp)
 
 target_include_directories(main PRIVATE
     include
     ${CURSES_INCLUDE_DIRS}
 )
 
-
 target_link_libraries(main PRIVATE
+    ${CURSES_LIBRARIES}
+)
+
+# test
+add_executable(test src/screen.cpp)
+
+target_include_directories(test PRIVATE
+    include
+    ${CURSES_INCLUDE_DIRS}
+)
+
+target_link_libraries(test PRIVATE
     ${CURSES_LIBRARIES}
 )
