@@ -33,7 +33,7 @@ target_link_libraries(main PRIVATE
 )
 
 # test
-add_executable(test src/screen.cpp)
+add_executable(test src/bounce.cpp)
 
 target_include_directories(test PRIVATE
     include
