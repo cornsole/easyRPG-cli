@@ -7,4 +7,6 @@
 
 int main(void);
 
+void start_scene();
+
 int test(void);
